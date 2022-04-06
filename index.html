@@ -163,12 +163,28 @@
 
                 <div class="contact__container bd-grid">
                     <form action="" class="contact__form">
-                        <input type="text" placeholder="Name" class="contact__input">
-                        <input type="mail" placeholder="Email" class="contact__input">
-                        <textarea name="" id="" cols="0" rows="10" class="contact__input"></textarea>
-                        <input type="button" value="Envoyer" class="contact__button button">
+                        <input type="text" id ="name" placeholder="Name" class="contact__input">
+                        <input type="mail" id="mail" placeholder="Email" class="contact__input">
+                        <textarea name="" id="body" cols="0" rows="10" class="contact__input"></textarea>
+                        <input type="button" onClick="sendEmail()" value="Send" class="contact__button button">
                     </form>
                 </div>
+                <script src="https://smtpjs.com/v3/smtp.js"></script>
+                <script>
+                    function sendEmail(){
+                        Email.send({
+                            SecureToken : "e81ab444-9c4e-4fbd-ad48-f82d4b223eb2",
+                            To : 'haba.yosr@gmail.com',
+                            From : document.getElementById("mail").value,
+                            Subject : "New contact",
+                            Body : "Name : "+document.getElementById("name").value
+                                    + "<br> Email : " + document.getElementById("mail").value
+                                    + "<br> Message : " + document.getElementById("body").value
+                        }).then(
+                            message => alert("Message send Succesfully!")
+                        );
+                    }
+                </script>
             </section>
         </main>
 
@@ -180,7 +196,7 @@
                 <a href="https://www.linkedin.com/in/yosr-haba-b8730b188/" class="footer__icon"><i class='bx bxl-linkedin'></i></a>
                 <a href="https://github.com/yossHB" class="footer__icon"><i class='bx bxl-github' ></i></a>
             </div>
-            <p class="footer__copy">&#169;copyright2022, YOSR HABA. All rigths reserved.</p>
+            <p class="footer__copy">&#169;copyright 2022, YOSR HABA. All rigths reserved.</p>
         </footer>
 
 
